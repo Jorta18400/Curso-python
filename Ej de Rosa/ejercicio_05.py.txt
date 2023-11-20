@@ -1,0 +1,188 @@
+# -*- coding: utf-8 -*-
+"""
+Ejercicios con cadenas de texto
+Asignatura: Métodos computacionales y Sistemas de Información Geográfica
+Máster de Geofísica y Meteorología (Universidad de Granada)
+Curso 2022-2023
+Autor: José Vicente Pérez Peña
+Contacto: vperez@ugr.es
+"""
+
+# Para los siguientes ejercicios, utiliza esta cadena de texto.
+
+mi_cadena = "El veloz muerciélago hidú, comía feliz cardillo y kiwi. La cigüeña tocada el saxofon derás del palenque de paja."
+
+# 1. Crea una cadena con todos los carécteres en minúscula, imprime la cadena resultante
+print("Ej. 01:  " + "-"*40)
+cadena1= mi_cadena.lower()
+print(cadena1)
+
+
+#%%
+# 2. Crea unan cadena con todos los carácteres en mayúscula, imprime la cadena resultante
+print("\nEj. 02:  " + "-"*40)
+cadena2= mi_cadena.upper()
+print(cadena2)
+
+
+#%%
+# 3. Crea una cadena donde sustituyas las "z" (zetas) por "s" (eses), imprime la cadena resultante
+print("\nEj. 03:  " + "-"*40)
+cadena3= mi_cadena.replace('z', 's')
+print(cadena3)
+
+
+
+#%%
+# 4. Crea una lista con las posiciones de la cadena en las que esté la letra "e" 
+# (no distingas entre mayúsculas y minúsculas). Imprime la lista resultante
+print("\nEj. 04:  " + "-"*40)
+
+lista4=[]
+for i in range(len(mi_cadena)):
+    if cadena1[i]=='e':
+        lista4.append(i)
+print(lista4)
+        
+
+
+
+#%%
+# 5. Imprime el número de vocales de la cadena. No distingas entre mayusculas y minusculas.
+# Imprime el número de elementos de esta lista.
+print("\nEj. 05:  " + "-"*40)
+vocales=list('aeiouAEIOU')
+
+contador=0
+for i in range(len(mi_cadena)):
+    if mi_cadena[i] in vocales:
+        contador += 1 
+#No entiendo la segunda línea del enunciado, no sé a qué lista se refiere
+print('Hay {} vocales en la cadena'.format(contador))
+print(len(mi_cadena))
+
+
+
+#%%
+# 6. Crea una lista con todas las palabras de la cadena de texto.
+# Imprime el número de elementos de esta lista.
+print("\nEj. 06:  " + "-"*40)
+cadena6= mi_cadena.replace('.','')
+cadena6= cadena6.replace(',','')
+cadena6= cadena6.lower()
+lista6= cadena6.split()
+#print(lista6)
+print(len(lista6))
+
+
+
+
+
+#%%
+# 7. Con la lista creada anteriormente, imprime el número de palabras con n carácteres
+# Ten en cuenta que los signos de puntuación "." y "," NO pertecenen a los carácteres de una palabra. 
+# Ej. 
+# "1 palabra de 1 carácter"
+# "4 palabras de 2 carácteres"
+# "1 palabra de 3 carácteres"
+# Etc.
+print("\nEj. 07:  " + "-"*40)
+
+print(lista6)
+listafrecuencias=[0 for i in range(12)] 
+#en vez de 12 se podría calcular haciendo que un for recorriera la lista y registrara el mayor valor de len(lista6[i])
+
+
+for i in range(len(lista6)):
+    listafrecuencias[len(lista6[i])] +=1
+
+for j in range(len(listafrecuencias)):
+    if listafrecuencias[j] ==0:
+        pass    
+    elif listafrecuencias[j] !=1 :
+        print('{} palabras de {} caracteres'.format(listafrecuencias[j], j))
+    else:
+        print('{} palabra de {} caracteres'.format(listafrecuencias[j], j))    
+    
+
+    
+
+
+
+
+
+#%%
+# 8. A patir de la cadena de texto "valores", obten una lista de números enteros
+# Imprime la lista resultante
+print("\nEj. 08:  " + "-"*40)
+valores = "6, 19, 27, 45, 67, 79, 81"
+
+lista= valores.split(',')
+lista8= [int(lista[n]) for n in range(len(lista))]
+print(lista8)
+
+
+
+
+
+#%%
+# 9. A patir de la cadena de texto "valores", obten una lista de números decimales
+# Imprime la lista resultante
+print("\nEj. 09:  " + "-"*40)
+valores = "6, 19.4, 27.4, 45, 67.3, 79, 81"
+
+lista= valores.split(',')
+lista9= [float(lista[n]) for n in range(len(lista))]
+print(lista9)
+
+
+
+
+
+#%%
+# 10. A patir de la cadena de texto "valores", obten una lista con los valores decimales de la cadena
+# Imprime la lista resultante
+print("\nEj. 10:  " + "-"*40)
+valores = "RAKE 6 Direction 19.34 Aux values 27, 45, 56 Flow Direction 79.81"
+
+valores= valores.replace(',', '') 
+lista = valores.split(' ')
+
+lista10=[]
+for n in range(len(lista)):
+    try:
+        lista10.append(float(lista[n]))
+    except ValueError:
+        print("Valor no numérico, no convertido")
+        continue
+
+print(lista10)
+
+
+#=========================================================================
+# Resultados esperados:
+# Si realizas los ejercicios correctamente, deberás imprimir lo siguiente
+
+#Ej. 01:  ----------------------------------------
+#el veloz muerciélago hidú comía feliz cardillo y kiwi. la cigüeña tocada el saxofon derás del palenque de paja. 1234567890
+#
+#Ej. 02:  ----------------------------------------
+#EL VELOZ MUERCIÉLAGO HIDÚ COMÍA FELIZ CARDILLO Y KIWI. LA CIGÜEÑA TOCADA EL SAXOFON DERÁS DEL PALENQUE DE PAJA. 1234567890
+#
+#Ej. 03:  ----------------------------------------
+#El veloz muerciélago hidú comía feliz cardillo y kiwi. la cigüeña tocada el saxofon derás del palenque de paja. 1234567890
+#El Veloz Muerciélago Hidú Comía Feliz Cardillo Y Kiwi. La Cigüeña Tocada El Saxofon Derás Del Palenque De Paja. 1234567890
+#
+#Ej. 04:  ----------------------------------------
+#Murcielago     
+#    Murcielago
+#Murcielago
+#
+#Ej. 05:  ----------------------------------------
+#El velos muerciélago hidú comía felis cardillo y kiwi. La cigüeña tocada el saxofon derás del palenque de paja. 1234567890
+#
+#Ej. 06:  ----------------------------------------
+#[0, 4, 11, 33, 62, 73, 85, 91, 97, 101, 104]
+#
+#Ej. 07:  ----------------------------------------
+#[6, 19, 27, 45, 67, 79, 81]
